@@ -6,8 +6,8 @@ describe 'Usuário clica em link com nome do galpão' do
     Warehouse.create(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
 
     #act
-    visit('/')
-    click_on('Galpão Brasília')
+    visit root_path
+    click_on 'Galpão Brasília'
 
     #assert
     expect(page).to have_content('Galpão BSB')
@@ -17,6 +17,19 @@ describe 'Usuário clica em link com nome do galpão' do
     expect(page).to have_content('Endereço: Santa-Maria')
     expect(page).to have_content('Cep: 72000-000')
     expect(page).to have_content('Descrição: Galpão destinado a toda região centro-oeste')
+  end
+
+  it 'e clica em botão para voltar a listagem de galpões' do
+    #arrange
+    Warehouse.create(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
+
+    #act
+    visit root_path
+    click_on 'Galpão Brasília'
+    click_on 'Voltar'
+
+    #assert
+    expect(current_path).to eq root_path
 
   end
 end

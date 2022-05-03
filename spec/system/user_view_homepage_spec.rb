@@ -4,7 +4,7 @@ describe 'Usuário visita tela inicial' do
   it 'e vê nome da app' do
     #arrange
     #act
-    visit('/')
+    visit root_path
     #assert
     expect(page).to have_content('Galpões & Estoque')
   end
@@ -17,7 +17,7 @@ describe 'Usuário visita tela inicial' do
     Warehouse.create(name: 'Brasília', code: 'BSB', city: 'Brasília', area: 40_000)
 
     #act (ação do usuário)
-    visit('/')
+    visit root_path
 
     #assert
     #garantir que eu vejo na tela os galpões Rio e Maceió e suas informações (nome, código, metragem e cidade)
@@ -43,7 +43,7 @@ describe 'Usuário visita tela inicial' do
     #arrange
 
     #act
-    visit('/')
+    visit root_path
 
     #assert
     expect(page).to have_content('Não existem galpões cadastrados')
