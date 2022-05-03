@@ -19,7 +19,7 @@ describe 'Usuário clica em link com nome do galpão' do
     expect(page).to have_content('Descrição: Galpão destinado a toda região centro-oeste')
   end
 
-  it 'e clica em botão para voltar a listagem de galpões' do
+  it 'e clica em link para voltar a listagem de galpões' do
     #arrange
     Warehouse.create(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
 
