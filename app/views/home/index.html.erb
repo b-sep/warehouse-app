@@ -6,9 +6,15 @@
   <p>Não existem galpões cadastrados</p>
 <% else %>
   <% @warehouses.each do |warehouse| %>
-    <%= link_to warehouse.name, warehouse_path(warehouse.id) %>
-    <%= "Código: #{warehouse.code}" %>
-    <%= "Cidade: #{warehouse.city}" %>
-    <%= "#{warehouse.area} m2" %>
+    <div>
+      <%= link_to warehouse.name, warehouse_path(warehouse.id) %>
+      <%= "Código: #{warehouse.code}" %>
+      <%= "Cidade: #{warehouse.city}" %>
+      <%= "#{warehouse.area} m2" %>
+    </div>
   <% end %>
 <% end %>
+
+<div>
+  <%= link_to 'Adicionar galpão', new_warehouse_path %>
+</div>
