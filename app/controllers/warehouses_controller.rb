@@ -11,7 +11,7 @@ class WarehousesController < ApplicationController
     @warehouse = Warehouse.new(warehouse_params)
 
     if @warehouse.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Galpão adicionado com sucesso'
     else
       render :new, status: :unprocessable_entity
     end

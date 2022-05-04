@@ -36,6 +36,7 @@ describe 'Usuário clica em link para adicionar galpão' do
 
     #assert
     expect(current_path).to eq root_path
+    expect(page).to have_content 'Galpão adicionado com sucesso'
     expect(page).to have_content 'Galpão Brasília'
     expect(page).to have_content 'BSB'
     expect(page).to have_content 'Brasília'
