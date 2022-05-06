@@ -35,12 +35,35 @@ describe 'Usuário clica em link para adicionar galpão' do
     click_on 'Adicionar galpão'
 
     #assert
-    expect(current_path).to eq root_path
-    expect(page).to have_content 'Galpão adicionado com sucesso'
-    expect(page).to have_content 'Galpão Brasília'
-    expect(page).to have_content 'BSB'
-    expect(page).to have_content 'Brasília'
-    expect(page).to have_content '40000 m2'
+    expect(current_path).to eq warehouse_path(Warehouse.last[:id])
+    expect(page).to have_content('Galpão BSB')
+    expect(page).to have_content('Nome: Galpão Brasília')
+    expect(page).to have_content('Cidade: Brasília')
+    expect(page).to have_content('Área: 40000 m2')
+    expect(page).to have_content('Endereço: Santa-Maria')
+    expect(page).to have_content('Cep: 72000-000')
+    expect(page).to have_content('Descrição: Galpão destinado a toda região centro-oeste')
 
+  end
+
+  it 'e tenta adicionar galpão sem preencher o formulário todo' do
+    #arrange
+
+    #act
+    visit root_path
+    click_on 'Adicionar galpão'
+    fill_in 'Nome:', with: ''
+    fill_in 'Código:', with: ''
+    fill_in 'Cidade:', with: ''
+    fill_in 'Área:', with: ''
+    fill_in 'Endereço:', with: ''
+    fill_in 'Cep:', with: ''
+    fill_in 'Descrição:', with: ''
+    click_on 'Adicionar galpão'
+
+    #assert
+
+    expect(page).to have_content 'Galpão não cadastrado'
+    
   end
 end

@@ -11,8 +11,9 @@ class WarehousesController < ApplicationController
     @warehouse = Warehouse.new(warehouse_params)
 
     if @warehouse.save
-      redirect_to root_path, notice: 'Galpão adicionado com sucesso'
+      redirect_to @warehouse, notice: 'Galpão adicionado com sucesso'
     else
+      flash.now[:notice] = "Galpão não cadastrado"
       render :new, status: :unprocessable_entity
     end
   end
