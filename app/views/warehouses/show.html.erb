@@ -5,13 +5,7 @@
   <p>Cidade: <%= @warehouse.city %></p>
   <p>Área: <%= @warehouse.area %> m2</p>
   <p>Endereço: <%= @warehouse.address %></p>
-  <p>
-    Cep: <%= if @warehouse.zip_code.include?('-')
-               @warehouse.zip_code
-             else
-              "#{@warehouse.zip_code.slice(0, 5)}-#{@warehouse.zip_code.slice(5, 3)}"
-             end %>
-  </p>
+  <p>Cep: <%= @warehouse.zip_code %></p>
   <p>Descrição: <%= @warehouse.description %></p>
 </div>
 
