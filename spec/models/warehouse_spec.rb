@@ -104,5 +104,15 @@ RSpec.describe Warehouse, type: :model do
       end
 
     end
+
+    context 'length' do
+      it 'retorna falso quando o tamanho do código é diferente de 3 caracteres' do
+        warehouse = Warehouse.new(name: 'Niterói', code: 'AAAA', city: 'Niterói', area: 70_000, address: 'Galeão', zip_code: '00000-000', description: 'Galpão de Niterói')
+
+        result = warehouse.valid?
+
+        expect(result).to be_falsey
+      end
+    end
   end
 end
