@@ -33,6 +33,13 @@ class WarehousesController < ApplicationController
     end
   end
 
+  def destroy
+    set_warehouse
+    @warehouse.destroy
+
+    redirect_to root_path, notice: 'Galpão deletado com sucesso', status: :see_other
+  end
+
   private
 
   def warehouse_params
