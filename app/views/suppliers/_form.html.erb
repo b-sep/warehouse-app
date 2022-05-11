@@ -17,7 +17,7 @@
 
   <div>
     <%= f.label :registration_number %>
-    <%= f.text_field :registration_number, placeholder: '13 números' %>
+    <%= f.text_field :registration_number, placeholder: '14 números' %>
     <% @supplier.errors.full_messages_for(:registration_number).each do |msg| %>
       <%= msg %><br><br>
     <% end %>

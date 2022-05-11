@@ -12,9 +12,9 @@ describe 'usuário clica em link para ver fornecedores' do
   end
 
   it 'e vê fornecedores cadastrados' do
-    Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '0000000000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
+    Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000000000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
 
-    Supplier.create!(corporate_name: 'RF2 LTDA', brand_name: 'RIACHO', registration_number: '0000000000002', full_address: 'qs 18 cond 31', city: 'Riacho Fundo', state: 'Distrito Federal', email: 'rf2@rf2.com')
+    Supplier.create!(corporate_name: 'RF2 LTDA', brand_name: 'RIACHO', registration_number: '00000000000002', full_address: 'qs 18 cond 31', city: 'Riacho Fundo', state: 'Distrito Federal', email: 'rf2@rf2.com')
 
     visit root_path
     within ('nav') do 

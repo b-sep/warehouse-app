@@ -28,7 +28,7 @@ describe 'usuário clica em link para adicionar fornecedor' do
 
     fill_in 'Razão Social', with: 'BSB LTDA'
     fill_in 'Nome Fantasia', with: 'BRASILINHA'
-    fill_in 'CNPJ', with: '0000000000001'
+    fill_in 'CNPJ', with: '00000000000001'
     fill_in 'Endereço', with: 'qnd 03 lote 22'
     fill_in 'Cidade', with: 'Taguatinga'
     fill_in 'Estado', with: 'Distrito Federal'
@@ -39,7 +39,7 @@ describe 'usuário clica em link para adicionar fornecedor' do
     expect(page).to have_content('Fornecedor adicionado com sucesso')
     expect(page).to have_content  'BSB LTDA'
     expect(page).to have_content  'BRASILINHA'
-    expect(page).to have_content 'CNPJ: 0000000000001'
+    expect(page).to have_content 'CNPJ: 00000000000001'
     expect(page).to have_content 'qnd 03 lote 22'
     expect(page).to have_content 'Taguatinga'
     expect(page).to have_content 'Distrito Federal'
