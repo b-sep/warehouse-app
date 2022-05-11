@@ -36,6 +36,7 @@ describe 'Usuário clica em link para adicionar galpão' do
 
     #assert
     expect(current_path).to eq warehouse_path(Warehouse.last[:id])
+    expect(page).to have_content('Galpão adicionado com sucesso')
     expect(page).to have_content('Galpão BSB')
     expect(page).to have_content('Nome: Galpão Brasília')
     expect(page).to have_content('Cidade: Brasília')

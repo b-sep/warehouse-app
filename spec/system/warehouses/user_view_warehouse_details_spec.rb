@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário clica em link com nome do galpão' do
   it 'e vê detalhes do galpão' do
     #arrange
-    Warehouse.create(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
+    Warehouse.create!(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
 
     #act
     visit root_path
@@ -31,5 +31,4 @@ describe 'Usuário clica em link com nome do galpão' do
     #assert
     expect(current_path).to eq root_path
   end
-  
 end

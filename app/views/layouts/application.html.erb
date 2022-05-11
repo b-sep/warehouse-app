@@ -10,10 +10,24 @@
   </head>
 
   <body>
-    <div>
-      <%= notice %>
-    </div>
+    <header>
+      <h1><%= link_to 'Galpões & Estoque', root_path %></h1>
+      <nav>
+        <%= link_to 'Fornecedores', suppliers_path %>
+      </nav>
+    </header>
 
-    <%= yield %>
+    <main>
+      <div>
+        <%= notice %>
+        <%= alert %>
+      </div>
+
+      <%= yield %>
+    </main>
+
+    <footer>
+      
+    </footer>
   </body>
 </html>

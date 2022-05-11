@@ -12,9 +12,9 @@ describe 'Usuário visita tela inicial' do
   it 'e vê os galpões cadastrados' do
     #arrange (preparação do teste)
     #cadastrar 2 galpões: Rio e Maceió
-    Warehouse.create(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000, address: 'Santos Dumont', zip_code: '70000-000', description: 'Galpão carioca')
-    Warehouse.create(name: 'Maceió', code: 'MCZ', city: 'Maceió', area: 50_000, address: 'Polo industrial', zip_code: '62500-000', description: 'Galpão de Maceió')
-    Warehouse.create(name: 'Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72220-107', description: 'Galpão de Brasília')
+    Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000, address: 'Santos Dumont', zip_code: '70000-000', description: 'Galpão carioca')
+    Warehouse.create!(name: 'Maceió', code: 'MCZ', city: 'Maceió', area: 50_000, address: 'Polo industrial', zip_code: '62500-000', description: 'Galpão de Maceió')
+    Warehouse.create!(name: 'Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72220-107', description: 'Galpão de Brasília')
 
     #act (ação do usuário)
     visit root_path
@@ -47,6 +47,5 @@ describe 'Usuário visita tela inicial' do
 
     #assert
     expect(page).to have_content('Não existem galpões cadastrados')
-
   end
 end
