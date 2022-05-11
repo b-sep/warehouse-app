@@ -1,5 +1,4 @@
 class WarehousesController < ApplicationController
-
   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
 
   def show; end
@@ -45,5 +44,4 @@ class WarehousesController < ApplicationController
   def set_warehouse
     @warehouse = Warehouse.find(params[:id])
   end
-
 end

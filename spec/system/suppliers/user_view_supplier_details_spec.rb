@@ -11,8 +11,8 @@ describe 'usuário acessa detalhes de um fornecedor' do
     click_on 'BRASILINHA'
 
     expect(current_path).to eq supplier_path(Supplier.last[:id])
-    expect(page).to have_content  'BSB LTDA'
-    expect(page).to have_content  'BRASILINHA'
+    expect(page).to have_content 'BSB LTDA'
+    expect(page).to have_content 'BRASILINHA'
     expect(page).to have_content 'CNPJ: 0000000000001'
     expect(page).to have_content 'qnd 03 lote 22'
     expect(page).to have_content 'Taguatinga'

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'usuário clica em link para ver fornecedores' do
   it 'a partir do do menu' do
-
     visit root_path
     within ('nav') do 
       click_on 'Fornecedores'
