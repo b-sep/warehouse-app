@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
@@ -14,6 +15,7 @@
       <h1><%= link_to 'Galpões & Estoque', root_path %></h1>
       <nav>
         <%= link_to 'Fornecedores', suppliers_path %>
+        <%= link_to 'Modelos de Produtos', product_models_path %>
       </nav>
     </header>
 
@@ -24,7 +26,6 @@
           <%= alert %>
         </strong>
       </div>
-
       <%= yield %>
     </main>
 

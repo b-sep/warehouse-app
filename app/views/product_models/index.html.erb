@@ -1,0 +1,17 @@
+<h1>Modelos de Produtos</h1>
+
+<% if @product_models.empty? %>
+  <p>Nenhum Modelo de Produto cadastrado</p>
+<% else %>
+  <% @product_models.each do |pm| %>
+    <div>
+      <h2><%= pm.name %></h2>
+      <h3>
+        <p>SKU: <%= pm.sku %></p>
+      </h3>
+      <h3>
+        <p>Fornecedor: <%= pm.supplier.brand_name %></p>
+      </h3>
+    </div>
+  <% end %>
+<% end %>
