@@ -5,7 +5,7 @@
 <% else %>
   <% @product_models.each do |pm| %>
     <div>
-      <h2><%= pm.name %></h2>
+      <h2><%= link_to pm.name, product_model_path(pm) %></h2>
       <h3>
         <p>SKU: <%= pm.sku %></p>
       </h3>
@@ -15,3 +15,5 @@
     </div>
   <% end %>
 <% end %>
+
+<%= link_to 'Adicionar Modelo de Produto', new_product_model_path %>

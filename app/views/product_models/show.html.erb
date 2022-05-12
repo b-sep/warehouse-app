@@ -1,0 +1,24 @@
+<h1><%= @pm.name %></h1>
+
+<section>
+  <p>
+    peso: <%=  @pm.weight %> gramas
+  </p>
+  <p>
+    largura: <%= @pm.width %> cms
+  </p>
+  <p>
+    altura: <%= @pm.height %> cms
+  </p>
+  <p>
+    profundidade: <%= @pm.depth %> cms
+  </p>
+  <p>
+    Código de Barras: <%= @pm.sku %>
+  </p>
+  <p>
+    Fornecedor: <%= @pm.supplier.brand_name %>
+  </p>
+</section>
+
+<%= link_to 'voltar', product_models_path %>

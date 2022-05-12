@@ -1,0 +1,60 @@
+<%= form_with model: product_model do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <% @pm.errors.full_messages_for(:name).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :weight %>
+    <%= f.text_field :weight, placeholder: 'em gramas' %>
+    <% @pm.errors.full_messages_for(:weight).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :width %>
+    <%= f.text_field :width %>
+    <% @pm.errors.full_messages_for(:width).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :height %>
+    <%= f.text_field :height %>
+    <% @pm.errors.full_messages_for(:height).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :depth %>
+    <%= f.text_field :depth %>
+    <% @pm.errors.full_messages_for(:depth).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :sku %>
+    <%= f.text_field :sku, placeholder: '20 carácteres' %>
+    <% @pm.errors.full_messages_for(:sku).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :supplier_id, 'Fornecedor' %>
+    <%= f.collection_select :supplier_id, Supplier.all, :id, :brand_name, :include_blank => true %>
+    <% @pm.errors.full_messages_for(:supplier).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
+  </div>
+
+  <%= f.submit @pm.persisted? ? 'Salvar Modelo de Produto' : 'Adicionar Modelo de Produto' %>
+  
+<% end %>
