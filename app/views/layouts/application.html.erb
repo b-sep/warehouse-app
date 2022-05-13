@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="text-center mb-4 p-4">
       <h1><%= link_to 'Galpões & Estoque', root_path %></h1>
       <nav>
         <%= link_to 'Fornecedores', suppliers_path %>
@@ -19,7 +19,7 @@
       </nav>
     </header>
 
-    <main>
+    <main class="container">
       <div>
         <strong>
           <%= notice %>
@@ -29,8 +29,8 @@
       <%= yield %>
     </main>
 
-    <footer>
-      
+    <footer class="text-center">
+      Projeto feito para o <%= link_to 'TreinaDev', 'https://treinadev.com.br/home', target: "_blank" %>, Júnior <%= Date.current.year %>
     </footer>
   </body>
 </html>

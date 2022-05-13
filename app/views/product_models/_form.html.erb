@@ -17,7 +17,7 @@
 
   <div>
     <%= f.label :width %>
-    <%= f.text_field :width %>
+    <%= f.text_field :width, placeholder: 'em centímetros' %>
     <% @pm.errors.full_messages_for(:width).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
@@ -25,7 +25,7 @@
 
   <div>
     <%= f.label :height %>
-    <%= f.text_field :height %>
+    <%= f.text_field :height, placeholder: 'em centímetros' %>
     <% @pm.errors.full_messages_for(:height).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
@@ -33,7 +33,7 @@
 
   <div>
     <%= f.label :depth %>
-    <%= f.text_field :depth %>
+    <%= f.text_field :depth, placeholder: 'em centímetros' %>
     <% @pm.errors.full_messages_for(:depth).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
