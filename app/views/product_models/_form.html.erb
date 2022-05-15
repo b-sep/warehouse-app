@@ -9,7 +9,7 @@
 
   <div>
     <%= f.label :weight %>
-    <%= f.text_field :weight, placeholder: 'em gramas' %>
+    <%= f.number_field :weight, placeholder: 'em gramas' %>
     <% @pm.errors.full_messages_for(:weight).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
@@ -17,7 +17,7 @@
 
   <div>
     <%= f.label :width %>
-    <%= f.text_field :width, placeholder: 'em centímetros' %>
+    <%= f.number_field :width, placeholder: 'em centímetros' %>
     <% @pm.errors.full_messages_for(:width).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
@@ -25,7 +25,7 @@
 
   <div>
     <%= f.label :height %>
-    <%= f.text_field :height, placeholder: 'em centímetros' %>
+    <%= f.number_field :height, placeholder: 'em centímetros' %>
     <% @pm.errors.full_messages_for(:height).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
@@ -33,7 +33,7 @@
 
   <div>
     <%= f.label :depth %>
-    <%= f.text_field :depth, placeholder: 'em centímetros' %>
+    <%= f.number_field :depth, placeholder: 'em centímetros' %>
     <% @pm.errors.full_messages_for(:depth).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
@@ -48,8 +48,8 @@
   </div>
 
   <div>
-    <%= f.label :supplier_id, 'Fornecedor' %>
-    <%= f.collection_select :supplier_id, Supplier.all, :id, :brand_name, :include_blank => true %>
+    <%= f.label :supplier_id %>
+    <%= f.collection_select :supplier_id, @suppliers, :id, :brand_name, :include_blank => true %>
     <% @pm.errors.full_messages_for(:supplier).each do |msg| %>
       <%= msg %><br><br>
     <% end %>

@@ -18,7 +18,7 @@ describe 'usuário acessa detalhes de um modelo de produto' do
     expect(page).to have_content 'largura: 70 cms'
     expect(page).to have_content 'altura: 45 cms'
     expect(page).to have_content 'profundidade: 10 cms'
-    expect(page).to have_content 'Código de Barras: TV32-SAMSU-XPTO90000'
+    expect(page).to have_content 'SKU: TV32-SAMSU-XPTO90000'
     expect(page).to have_content 'Fornecedor: BRASILINHA'
   end
 

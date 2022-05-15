@@ -19,7 +19,7 @@ describe 'usuário clica em link para editar modelo de produto' do
     expect(page).to have_field('Largura', with: '70')
     expect(page).to have_field('Altura', with: '45')
     expect(page).to have_field('Profundidade', with: '10')
-    expect(page).to have_field('Código de Barras', with: 'TV32-SAMSU-XPTO90000')
+    expect(page).to have_field('SKU', with: 'TV32-SAMSU-XPTO90000')
     expect(page).to have_field('Fornecedor', with: 1)
   end
 
@@ -42,7 +42,7 @@ describe 'usuário clica em link para editar modelo de produto' do
     fill_in 'Largura', with: '80'
     fill_in 'Altura', with: '50'
     fill_in 'Profundidade', with: '15'
-    fill_in 'Código de Barras', with: 'TV32-SAMSU-XPTO90001'
+    fill_in 'SKU', with: 'TV32-SAMSU-XPTO90001'
     page.select 'BRASILINHA2', from: 'Fornecedor'
     click_on 'Salvar Modelo de Produto'
 
@@ -52,7 +52,7 @@ describe 'usuário clica em link para editar modelo de produto' do
     expect(page).to have_content 'largura: 80 cms'
     expect(page).to have_content 'altura: 50 cms'
     expect(page).to have_content 'profundidade: 15 cms'
-    expect(page).to have_content 'Código de Barras: TV32-SAMSU-XPTO90001'
+    expect(page).to have_content 'SKU: TV32-SAMSU-XPTO90001'
     expect(page).to have_content 'Fornecedor: BRASILINHA2'
   end
 

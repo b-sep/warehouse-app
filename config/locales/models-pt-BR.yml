@@ -27,5 +27,5 @@ pt-BR:
         width: 'Largura'
         height: 'Altura'
         depth: 'Profundidade'
-        sku: 'Código de Barras'
-        supplier: 'Fornecedor'
+        sku: 'SKU'
+        supplier_id: 'Fornecedor'

@@ -1,5 +1,6 @@
 class ProductModelsController < ApplicationController
-  before_action :set_product_model, only: [:show, :edit, :update]
+  before_action :set_product_model, only: %i[show edit update]
+  before_action :set_suppliers, only: %i[new edit]
 
   def index
     @product_models = ProductModel.all
@@ -17,6 +18,7 @@ class ProductModelsController < ApplicationController
     if @pm.save
       redirect_to @pm, notice: 'Modelo de Produto adicionado com sucesso'
     else
+      @suppliers = Supplier.order(:brand_name)
       flash.now[:notice] = 'Erro ao adicionar Modelo de Produto'
       render :new, status: :unprocessable_entity
     end
@@ -28,6 +30,7 @@ class ProductModelsController < ApplicationController
     if @pm.update(product_model_params)
       redirect_to @pm, notice: 'Modelo de Produto atualizado com sucesso'
     else
+      @suppliers = Supplier.order(:brand_name)
       flash.now[:notice] = 'Erro ao atualizar Modelo de Produto'
       render :edit, status: :unprocessable_entity
     end
@@ -42,4 +45,9 @@ class ProductModelsController < ApplicationController
   def set_product_model
     @pm = ProductModel.find(params[:id])
   end
+
+  def set_suppliers
+    @suppliers = Supplier.order(:brand_name)
+  end
+  
 end
