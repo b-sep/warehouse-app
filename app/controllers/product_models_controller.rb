@@ -1,4 +1,5 @@
 class ProductModelsController < ApplicationController
+  before_action :authenticate_user!, only: %i[index]
   before_action :set_product_model, only: %i[show edit update]
   before_action :set_suppliers, only: %i[new edit]
 

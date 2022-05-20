@@ -2,10 +2,13 @@ require 'rails_helper'
 
 describe 'usuário acessa detalhes de um modelo de produto' do
   it 'e vê detalhes' do
+    user = User.create!(name: 'Junior', email: 'jr@jr.com', password: '123456')
+
     supplier = Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000000000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
 
     ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
 
+    login_as user
     visit root_path
     within ('nav') do
       click_on 'Modelos de Produtos'
@@ -23,10 +26,13 @@ describe 'usuário acessa detalhes de um modelo de produto' do
   end
 
   it 'e volta para listagem de modelos de produtos' do
+    user = User.create!(name: 'Junior', email: 'jr@jr.com', password: '123456')
+
     supplier = Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000000000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
 
     ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
 
+    login_as user
     visit root_path
     within ('nav') do
       click_on 'Modelos de Produtos'

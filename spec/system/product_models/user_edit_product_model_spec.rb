@@ -2,10 +2,13 @@ require 'rails_helper'
 
 describe 'usuário clica em link para editar modelo de produto' do
   it 'e vê formulário preenchido' do
+    user = User.create!(name: 'Junior', email: 'jr@jr.com', password: '123456')
+
     supplier = Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000000000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
 
     ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
 
+    login_as user
     visit root_path
     within ('nav') do
       click_on 'Modelos de Produtos'
@@ -24,12 +27,15 @@ describe 'usuário clica em link para editar modelo de produto' do
   end
 
   it 'vê formulário preenchido e edita com sucesso' do
+    user = User.create!(name: 'Junior', email: 'jr@jr.com', password: '123456')
+
     supplier = Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000000000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
 
     supplier2 = Supplier.create!(corporate_name: 'BSA LTDA', brand_name: 'BRASILINHA2', registration_number: '00000000000002', full_address: 'qnd 05 lote 22', city: 'Taguatinga2', state: 'DF', email: 'bsb2@bsb.com')
 
     ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
 
+    login_as user
     visit root_path
     within ('nav') do
       click_on 'Modelos de Produtos'
@@ -57,10 +63,13 @@ describe 'usuário clica em link para editar modelo de produto' do
   end
 
   it 'vê formulário preenchido e edita sem sucesso' do
+    user = User.create!(name: 'Junior', email: 'jr@jr.com', password: '123456')
+
     supplier = Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000000000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
 
     ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
 
+    login_as user
     visit root_path
     within ('nav') do
       click_on 'Modelos de Produtos'

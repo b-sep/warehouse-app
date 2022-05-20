@@ -2,10 +2,13 @@ require 'rails_helper'
 
 describe 'usuário clica em link para adicionar modelo de produto' do
   it 'e adiciona modelo de produto com sucesso' do
+    user = User.create!(name: 'Junior', email: 'jr@jr.com', password: '123456')
+
     Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000100000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
 
     Supplier.create!(corporate_name: 'BSB2 LTDA', brand_name: 'BRASILINHAA', registration_number: '00000100000002', full_address: 'qnd 03 lote 23', city: 'Taguatinga2', state: 'Distrito Federal2', email: 'bsb@bsb2.com')
     
+    login_as user
     visit root_path
     within ('nav') do
       click_on 'Modelos de Produtos'
@@ -26,8 +29,11 @@ describe 'usuário clica em link para adicionar modelo de produto' do
   end
 
   it 'e tenta adicionar sem preencher formulário' do
+    user = User.create!(name: 'Junior', email: 'jr@jr.com', password: '123456')
+
     Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000100000001', full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
     
+    login_as user
     visit root_path
     within ('nav') do
       click_on 'Modelos de Produtos'
