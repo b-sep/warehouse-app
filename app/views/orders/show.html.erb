@@ -1,0 +1,16 @@
+<h1>Pedido </h1>
+
+<section>
+  <div>
+    <p>Galpão destino: <%= @order.warehouse.name %></p>
+  </div>
+  <div>
+    <p>Fornecedor: <%= @order.supplier.corporate_name %></p>
+  </div>
+  <div>
+    <p>Usuário responsável: <%= @order.user.name %> | <%= @order.user.email %> </p>
+  </div>
+  <div>
+    <p>Data prevista de entrega: <%= I18n.localize(@order.estimated_delivery_date) %></p>
+  </div>
+</section>
