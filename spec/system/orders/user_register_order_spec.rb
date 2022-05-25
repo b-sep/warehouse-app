@@ -28,7 +28,7 @@ describe 'usuário cadastra um pedido' do
     fill_in 'Data prevista de entrega', with: '20/08/2022'
     click_on 'Registrar'
     
-
+    expect(page).to have_content Order.last.code
     expect(page).to have_content 'Pedido cadastrado com sucesso'
     expect(page).to have_content 'Galpão destino: Galpão Brasília'
     expect(page).to have_content 'Fornecedor: BSB LTDA'
