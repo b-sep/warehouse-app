@@ -2,10 +2,11 @@ require 'rails_helper'
 
 describe 'Usuário clica em link com nome do galpão' do
   it 'e vê detalhes do galpão' do
-    #arrange
+    user = User.create!(name: 'beto', email: 'b.treina@dev.com.br', password: '123456')
     Warehouse.create!(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
 
     #act
+    login_as user
     visit root_path
     click_on 'Galpão Brasília'
 
@@ -20,10 +21,11 @@ describe 'Usuário clica em link com nome do galpão' do
   end
 
   it 'e clica em link para voltar a listagem de galpões' do
-    #arrange
+    user = User.create!(name: 'beto', email: 'b.treina@dev.com.br', password: '123456')
     Warehouse.create(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
 
     #act
+    login_as user
     visit root_path
     click_on 'Galpão Brasília'
     click_on 'Voltar'

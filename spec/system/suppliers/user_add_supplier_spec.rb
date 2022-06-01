@@ -1,23 +1,6 @@
 require 'rails_helper'
 
 describe 'usuário clica em link para adicionar fornecedor' do
-  it 'e vê formulário' do
-
-    visit root_path
-    within ('nav') do
-      click_on 'Fornecedores'
-    end
-    click_on 'Adicionar Fornecedor'
-
-    expect(page).to have_field('Razão Social')
-    expect(page).to have_field('Nome Fantasia')
-    expect(page).to have_field('CNPJ')
-    expect(page).to have_field('Endereço')
-    expect(page).to have_field('Cidade')
-    expect(page).to have_field('Estado')
-    expect(page).to have_field('E-mail')
-  end
-
   it 'e adiciona fornecedor com sucesso' do
 
     visit root_path
@@ -36,7 +19,7 @@ describe 'usuário clica em link para adicionar fornecedor' do
     click_on 'Adicionar fornecedor'
 
     expect(current_path).to eq supplier_path(Supplier.last[:id])
-    expect(page).to have_content('Fornecedor adicionado com sucesso')
+    expect(page).to have_content 'Fornecedor adicionado com sucesso'
     expect(page).to have_content  'BSB LTDA'
     expect(page).to have_content  'BRASILINHA'
     expect(page).to have_content 'CNPJ: 00000000000001'

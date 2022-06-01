@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   belongs_to :supplier
   belongs_to :user
 
+  validates :estimated_delivery_date, :code, presence: true
+
   private
 
   def generate_code

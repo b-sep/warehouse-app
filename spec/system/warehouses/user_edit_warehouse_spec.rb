@@ -3,8 +3,9 @@ require 'rails_helper'
 describe 'Usuário clica em link para editar galpão' do
 
   it 'na página de detalhes e ve formulário com campos preenchidos' do
+    user = User.create!(name: 'beto', email: 'b.treina@dev.com.br', password: '123456')
     warehouse = Warehouse.create!(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
-
+    login_as user
     visit root_path
     click_on 'Galpão Brasília'
     click_on 'Editar galpão'
@@ -19,8 +20,11 @@ describe 'Usuário clica em link para editar galpão' do
   end
 
   it 'vê formulário preenchido e edita com sucesso o galpão' do
+    user = User.create!(name: 'beto', email: 'b.treina@dev.com.br', password: '123456')
     warehouse = Warehouse.create!(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
+    
 
+    login_as user
     visit root_path
     click_on 'Galpão Brasília'
     click_on 'Editar galpão'
@@ -44,8 +48,10 @@ describe 'Usuário clica em link para editar galpão' do
   end
 
   it 'vê formulário e edita sem sucesso o galpão' do
+    user = User.create!(name: 'beto', email: 'b.treina@dev.com.br', password: '123456')
     warehouse = Warehouse.create!(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
 
+    login_as user
     visit root_path
     click_on 'Galpão Brasília'
     click_on 'Editar galpão'

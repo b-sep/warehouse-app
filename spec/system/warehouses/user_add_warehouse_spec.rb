@@ -1,28 +1,11 @@
 require 'rails_helper'
 
 describe 'Usuário clica em link para adicionar galpão' do
-  it 'e vê formulário' do
-    #arrange
-
-    #act
-    visit root_path
-    click_on 'Adicionar galpão'
-
-    #assert
-    expect(page).to have_field('Nome')
-    expect(page).to have_field('Código')
-    expect(page).to have_field('Cidade')
-    expect(page).to have_field('Área')
-    expect(page).to have_field('Endereço')
-    expect(page).to have_field('Cep')
-    expect(page).to have_field('Descrição')
-
-  end
-
   it 'e adiciona galpão com sucesso' do
-    #arrange
 
-    #act
+    user = User.create!(name: 'beto', email: 'b.treina@dev.com.br', password: '123456')
+    login_as user
+
     visit root_path
     click_on 'Adicionar galpão'
     fill_in 'Nome', with: 'Galpão Brasília'
@@ -49,7 +32,8 @@ describe 'Usuário clica em link para adicionar galpão' do
 
   it 'e tenta adicionar galpão sem preencher o formulário todo' do
     #arrange
-
+    user = User.create!(name: 'beto', email: 'b.treina@dev.com.br', password: '123456')
+    login_as user
     #act
     visit root_path
     click_on 'Adicionar galpão'

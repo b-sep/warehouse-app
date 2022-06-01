@@ -90,4 +90,14 @@ RSpec.describe Supplier, type: :model do
       end
     end
   end
+
+  describe '#full_description' do
+    it 'exibe o nome e o cnpj' do
+      s = Supplier.new(brand_name: 'Samsung', registration_number: '12332165445612')
+
+      result = s.full_description
+
+      expect(result).to eq 'Samsung - 12332165445612'
+    end
+  end
 end

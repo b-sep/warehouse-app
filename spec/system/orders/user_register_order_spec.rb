@@ -20,18 +20,21 @@ describe 'usuário cadastra um pedido' do
     Supplier.create!(corporate_name: 'BSSB LTDA', brand_name: 'BRASILINHAA', 
                      registration_number: '00000000000002', full_address: 'qnd 04 lote 22', city: 'Taguatinga sul', state: 'Distrito Federaal', email: 'bsb@bsb2.com')
 
+
+    allow(SecureRandom).to receive(:alphanumeric).with(10).and_return('ACB1234567')
+
     login_as user
     visit root_path
     click_on 'Registrar pedido'
-    select warehouse.name, from: 'Galpão destino'
-    select supplier.corporate_name, from: 'Fornecedor'
+    select 'BSB - Galpão Brasília', from: 'Galpão destino'
+    select 'BRASILINHA - 00000000000001', from: 'Fornecedor'
     fill_in 'Data prevista de entrega', with: '20/08/2022'
     click_on 'Registrar'
     
-    expect(page).to have_content Order.last.code
+    expect(page).to have_content 'ACB1234567'
     expect(page).to have_content 'Pedido cadastrado com sucesso'
-    expect(page).to have_content 'Galpão destino: Galpão Brasília'
-    expect(page).to have_content 'Fornecedor: BSB LTDA'
+    expect(page).to have_content 'Galpão destino: BSB - Galpão Brasília'
+    expect(page).to have_content 'Fornecedor: BRASILINHA - 00000000000001'
     expect(page).to have_content 'Usuário responsável: Júnior | jr@email.com'
     expect(page).to have_content 'Data prevista de entrega: 20/08/2022'
     expect(page).not_to have_content 'Galpão Brasíliaa'

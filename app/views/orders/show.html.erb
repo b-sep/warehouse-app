@@ -2,10 +2,10 @@
 
 <section>
   <div>
-    <p>Galpão destino: <%= @order.warehouse.name %></p>
+    <p>Galpão destino: <%= @order.warehouse.full_description %></p>
   </div>
   <div>
-    <p>Fornecedor: <%= @order.supplier.corporate_name %></p>
+    <p>Fornecedor: <%= @order.supplier.full_description %></p>
   </div>
   <div>
     <p>Usuário responsável: <%= @order.user.name %> | <%= @order.user.email %> </p>
