@@ -8,12 +8,15 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @warehouses = Warehouse.all
+    @suppliers = Supplier.all
     @order = Order.new(set_order_params)
     @order.user = current_user
     
-    if @order.save!
+    if @order.save
       redirect_to @order, notice: 'Pedido cadastrado com sucesso'
     else
+      flash.now[:alert]  = 'Pedido não salvo'
       render :new, status: :unprocessable_entity
     end
   end

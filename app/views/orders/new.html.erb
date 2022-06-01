@@ -4,16 +4,25 @@
   <fieldset>
     <%= f.label :warehouse_id %>
     <%= f.collection_select :warehouse_id, @warehouses, :id, :full_description %>
+    <% @order.errors.full_messages_for(:warehouse_id).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
   </fieldset>
 
   <fieldset>
     <%= f.label :supplier_id %>
     <%= f.collection_select :supplier_id, @suppliers, :id, :full_description %>
+    <% @order.errors.full_messages_for(:supplier_id).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
   </fieldset>
 
-   <fieldset>
+  <fieldset>
     <%= f.label :estimated_delivery_date %>
     <%= f.date_field :estimated_delivery_date %>
+    <% @order.errors.full_messages_for(:estimated_delivery_date).each do |msg| %>
+      <%= msg %><br><br>
+    <% end %>
   </fieldset>
 
   <%= f.submit 'Registrar' %>

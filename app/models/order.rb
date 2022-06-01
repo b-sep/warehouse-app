@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   belongs_to :user
 
   validates :estimated_delivery_date, :code, presence: true
+  validate :estimated_delivery_date_is_future
 
   private
 
@@ -15,5 +16,9 @@ class Order < ApplicationRecord
     else
       code
     end
+  end
+
+  def estimated_delivery_date_is_future
+    self.errors.add(:estimated_delivery_date, 'deve ser futura') if self.estimated_delivery_date.present? && self.estimated_delivery_date <= Date.today
   end
 end
