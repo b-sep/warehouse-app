@@ -3,16 +3,16 @@
 <%= form_with model: @order do |f| %>
   <fieldset>
     <%= f.label :warehouse_id %>
-    <%= f.collection_select :warehouse_id, @warehouses, :id, :full_description %>
-    <% @order.errors.full_messages_for(:warehouse_id).each do |msg| %>
+    <%= f.collection_select :warehouse_id, @warehouses, :id, :full_description, :include_blank => true %>
+    <% @order.errors.full_messages_for(:warehouse).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
   </fieldset>
 
   <fieldset>
     <%= f.label :supplier_id %>
-    <%= f.collection_select :supplier_id, @suppliers, :id, :full_description %>
-    <% @order.errors.full_messages_for(:supplier_id).each do |msg| %>
+    <%= f.collection_select :supplier_id, @suppliers, :id, :full_description, :include_blank => true %>
+    <% @order.errors.full_messages_for(:supplier).each do |msg| %>
       <%= msg %><br><br>
     <% end %>
   </fieldset>

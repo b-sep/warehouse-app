@@ -1,0 +1,8 @@
+<h1>Resultado da busca por: <%= @query %> </h1>
+
+<p><%= @orders.count %> <%= Order.model_name.human(count: @orders.count) %> <%= I18n.t(:found, count: @orders.count) %> </p>
+<% @orders.each do |order| %>
+  <p><%= Order.human_attribute_name(:code) %>: <%= order.code %></p>
+  <p><%= Order.human_attribute_name(:warehouse) %>: <%= order.warehouse.full_description %></p>
+  <p><%= Order.human_attribute_name(:supplier) %>: <%= order.supplier.full_description %></p>
+<% end %>

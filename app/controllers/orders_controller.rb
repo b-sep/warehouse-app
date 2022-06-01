@@ -8,14 +8,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @warehouses = Warehouse.all
-    @suppliers = Supplier.all
     @order = Order.new(set_order_params)
     @order.user = current_user
     
     if @order.save
       redirect_to @order, notice: 'Pedido cadastrado com sucesso'
     else
+      @warehouses = Warehouse.all
+      @suppliers = Supplier.all
       flash.now[:alert]  = 'Pedido não salvo'
       render :new, status: :unprocessable_entity
     end
@@ -23,6 +23,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+  end
+
+  def search
+    @query = params[:query]
+    @orders = Order.where("code LIKE ?", "%#{params[:query]}%")
   end
 
   private
