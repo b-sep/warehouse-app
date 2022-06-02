@@ -14,9 +14,10 @@
     <header class="text-center mb-4 p-4 container">
       <h1><%= link_to 'Galpões & Estoque', root_path %></h1>
       <nav>
-        <%= link_to 'Fornecedores', suppliers_path %>
-        <%= link_to 'Modelos de Produtos', product_models_path %>
-        <%= link_to 'Registrar pedido', new_order_path %>
+        <%= link_to 'Fornecedores', suppliers_path %> |
+        <%= link_to 'Modelos de Produtos', product_models_path %> |
+        <%= link_to 'Registrar pedido', new_order_path %> |
+        <%= link_to 'Meus pedidos', orders_path %>
 
         <% if user_signed_in? %>
           <%= current_user.email %>
