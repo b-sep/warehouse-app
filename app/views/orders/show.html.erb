@@ -1,11 +1,11 @@
-<h1>Pedido <%= @order.code %></h1>
+<h1>Detalhes do pedido <%= @order.code %></h1>
 
 <section>
   <div>
-    <p>Galpão destino: <%= @order.warehouse.full_description %></p>
+    <p><%= Order.human_attribute_name(:warehouse) %>: <%= @order.warehouse.full_description %></p>
   </div>
   <div>
-    <p>Fornecedor: <%= @order.supplier.full_description %></p>
+    <p><%= Order.human_attribute_name(:supplier) %>: <%= @order.supplier.full_description %></p>
   </div>
   <div>
     <p>Usuário responsável: <%= @order.user.name %> | <%= @order.user.email %> </p>
@@ -14,3 +14,5 @@
     <p>Data prevista de entrega: <%= I18n.localize(@order.estimated_delivery_date) %></p>
   </div>
 </section>
+
+<%= link_to 'Editar pedido', edit_order_path(@order) %>
