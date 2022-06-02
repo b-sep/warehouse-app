@@ -12,3 +12,6 @@ pt-BR:
         supplier: 'Fornecedor'
         estimated_delivery_date: 'Data prevista de entrega'
         code: 'Código'
+        pending: 'Pendente'
+        delivered: 'Entregue'
+        canceled: 'Cancelado'

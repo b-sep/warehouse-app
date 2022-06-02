@@ -13,6 +13,13 @@
   <div>
     <p>Data prevista de entrega: <%= I18n.localize(@order.estimated_delivery_date) %></p>
   </div>
+   <div>
+    <p>Status do pedido: <%= Order.human_attribute_name(@order.status) %></p>
+  </div>
 </section>
 
-<%= link_to 'Editar pedido', edit_order_path(@order) %>
+<% if @order.pending? %>
+  <%= button_to 'Pedido entregue', delivered_order_path(@order) %>
+  <%= button_to 'Pedido cancelado', canceled_order_path(@order) %>
+  <%= link_to 'Editar pedido', edit_order_path(@order) %>
+<% end %>

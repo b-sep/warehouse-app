@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order_and_check_user, only: %i[show edit update]
+  before_action :set_order_and_check_user, only: %i[show edit update delivered canceled]
 
   def index
     @orders = current_user.orders
@@ -44,6 +44,16 @@ class OrdersController < ApplicationController
   def search
     @query = params[:query]
     @orders = Order.where("code LIKE ?", "%#{params[:query]}%")
+  end
+
+  def delivered
+    @order.delivered!
+    redirect_to @order, notice: 'Status do pedido atualizado com sucesso'
+  end
+
+  def canceled
+    @order.canceled!
+    redirect_to @order, notice: 'Status do pedido atualizado com sucesso'
   end
 
   private

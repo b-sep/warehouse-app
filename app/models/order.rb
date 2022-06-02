@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   belongs_to :supplier
   belongs_to :user
 
+  enum status: { pending: 0, delivered: 5, canceled: 10}, _default: :pending
+
   validates :estimated_delivery_date, :code, presence: true
   validate :estimated_delivery_date_is_future
 

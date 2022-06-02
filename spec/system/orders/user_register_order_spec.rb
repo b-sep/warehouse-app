@@ -39,6 +39,7 @@ describe 'usuário cadastra um pedido' do
     expect(page).to have_content 'Data prevista de entrega: 20/08/2022'
     expect(page).not_to have_content 'Galpão Brasíliaa'
     expect(page).not_to have_content 'BSSB LTDA'
+    expect(page).to have_content 'Status do pedido: Pendente'
   end
 
   it 'e data prevista informada é menor que data atual' do
