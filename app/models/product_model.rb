@@ -7,4 +7,8 @@ class ProductModel < ApplicationRecord
   has_many :order_items
   has_many :orders, through: :order_items
   has_many :stock_products
+
+  def full_description
+    "#{self.name} - #{self.sku}"
+  end
 end

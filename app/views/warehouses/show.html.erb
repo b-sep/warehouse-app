@@ -9,6 +9,19 @@
   <p>Descrição: <%= @warehouse.description %></p>
 </div>
 
+<section>
+  <h2>Itens em estoque</h2>
+  <% if @stocks.any? %>
+    <% @stocks.each do |p, q| %>
+      <%= q %>x <%= p.full_description %>
+    <% end %>
+  <% else %>
+    <h4>Nenhum item em estoque</h4>
+  <% end %>
+</section>
+
+
+
 <%= link_to 'Voltar', root_path %>
 <%= link_to 'Editar galpão', edit_warehouse_path(@warehouse.id) %>
 <%= button_to 'Deletar galpão', @warehouse, method: :delete, form: { data: { turbo_confirm: "Tem certeza?" }} %>

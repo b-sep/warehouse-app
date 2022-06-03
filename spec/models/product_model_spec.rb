@@ -186,4 +186,12 @@ RSpec.describe ProductModel, type: :model do
     end
 
   end
+
+  describe '#full_description' do
+    it 'exibe o nome e o código sku' do
+      pm = ProductModel.new(name: 'Galaxy s10e', sku: 'GLS10E1236AA88962311')
+
+      expect(pm.full_description).to eq 'Galaxy s10e - GLS10E1236AA88962311'
+    end
+  end
 end
