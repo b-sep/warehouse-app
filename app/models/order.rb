@@ -4,7 +4,8 @@ class Order < ApplicationRecord
   belongs_to :supplier
   belongs_to :user
   has_many :order_items
-  has_many :product_modeels, through: :order_items
+  has_many :product_models, through: :order_items
+  has_many :stock_products
 
   enum status: { pending: 0, delivered: 5, canceled: 10}, _default: :pending
 
@@ -25,4 +26,5 @@ class Order < ApplicationRecord
   def estimated_delivery_date_is_future
     self.errors.add(:estimated_delivery_date, 'deve ser futura') if self.estimated_delivery_date.present? && self.estimated_delivery_date <= Date.today
   end
+
 end

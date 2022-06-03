@@ -69,5 +69,19 @@ RSpec.describe Order, type: :model do
            
       expect(order_2.code).not_to eq order_1.code
     end
+
+    it 'e não deve ser modificado' do
+      user = User.create!(name: 'Júnior', email: 'jr@email.com', password: 'password')
+      warehouse = Warehouse.create!(name: 'Galpão Brasília', code: 'BSB', city: 'Brasília', area: 40_000, 
+                                    address: 'Santa-Maria', zip_code: '72000-000', description: 'Galpão destinado a toda região centro-oeste')
+      supplier = Supplier.create!(corporate_name: 'BSB LTDA', brand_name: 'BRASILINHA', registration_number: '00000000000001',
+                                  full_address: 'qnd 03 lote 22', city: 'Taguatinga', state: 'Distrito Federal', email: 'bsb@bsb.com')
+
+      order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: Date.tomorrow)
+      original_code = order.code
+      order.update!(estimated_delivery_date: 2.weeks.from_now)
+
+      expect(order.code).to eq original_code
+    end
   end
 end
