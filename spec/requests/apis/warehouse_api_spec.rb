@@ -59,5 +59,75 @@ describe 'Warehouse API' do
       expect(response.content_type).to include 'application/json'
       expect(json_response.size).to eq 0
     end
+
+    it 'fail if theres a internal error' do
+      allow(Warehouse).to receive(:all).and_raise(ActiveRecord::QueryCanceled)
+
+      get '/api/v1/warehouses'
+
+      expect(response).to have_http_status 500
+    end
+  end
+
+  context 'POST /api/v1/warehouses' do
+    it 'success' do
+      warehouse_params = { warehouse: 
+                                      { 
+                                        name: 'Galpão Brasília',
+                                        code: 'BSB',
+                                        city: 'Brasília',
+                                        area: '40000',
+                                        address: 'Santa-Maria',
+                                        zip_code: '72000-000',
+                                        description: 'Galpão destinado a região centro-oeste' 
+                                      } 
+                         }
+      
+      post '/api/v1/warehouses', params: warehouse_params
+      json_response = JSON.parse(response.body)
+
+      expect(response).to have_http_status 201
+      expect(response.content_type).to include 'application/json'
+      expect(json_response['name']).to eq 'Galpão Brasília'
+      expect(json_response['code']).to eq 'BSB'
+      expect(json_response['city']).to eq 'Brasília'
+      expect(json_response['address']).to eq 'Santa-Maria'
+      expect(json_response['zip_code']).to eq '72000-000'
+      expect(json_response['description']).to eq 'Galpão destinado a região centro-oeste'
+    end
+
+    it 'fail if params are not complete' do
+      warehouse_params = { warehouse: 
+                                      { 
+                                        name: 'Galpão Brasília',
+                                        code: 'BSB',
+                                        city: 'Brasília',
+                                      } 
+                         }
+      post '/api/v1/warehouses', params: warehouse_params
+
+      expect(response).to have_http_status 412
+      expect(response.body).to include 'Endereço não pode ficar em branco'
+      expect(response.body).to include 'Cep não pode ficar em branco'
+    end
+
+    it 'fail if theres an internal error' do
+      allow(Warehouse).to receive(:new).and_raise(ActiveRecord::ActiveRecordError)
+
+      warehouse_params = { warehouse: 
+                                      { 
+                                        name: 'Galpão Brasília',
+                                        code: 'BSB',
+                                        city: 'Brasília',
+                                        area: '40000',
+                                        address: 'Santa-Maria',
+                                        zip_code: '72000-000',
+                                        description: 'Galpão destinado a região centro-oeste' 
+                                      } 
+                         }
+      post '/api/v1/warehouses', params: warehouse_params
+
+      expect(response).to have_http_status 500
+    end
   end
 end
